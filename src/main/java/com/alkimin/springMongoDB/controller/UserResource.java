@@ -1,6 +1,7 @@
 package com.alkimin.springMongoDB.controller;
 
 import com.alkimin.springMongoDB.domain.User;
+import com.alkimin.springMongoDB.dto.UserDTO;
 import com.alkimin.springMongoDB.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class UserResource {
     private UserService service;
 
     @GetMapping
-    public ResponseEntity<List<User>> findAll() {
+    public ResponseEntity<List<UserDTO>> findAll() {
         return ResponseEntity.ok().body(service.findAll());
     }
 
