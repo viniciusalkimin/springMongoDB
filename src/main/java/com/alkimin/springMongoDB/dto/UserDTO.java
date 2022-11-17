@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.io.Serializable;
+import java.util.Optional;
 
 @AllArgsConstructor
 @Getter
@@ -17,6 +18,7 @@ public class UserDTO implements Serializable {
     public UserDTO(User user) {
         this.id = user.getId();
         this.name = user.getName();
-        this.email = user.getName();
+        this.email = user.getEmail();
     }
+
 }

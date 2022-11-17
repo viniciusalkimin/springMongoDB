@@ -12,7 +12,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-@Document
+@Document(collection="user")
 @Getter
 public class User implements Serializable {
 
