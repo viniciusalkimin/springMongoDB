@@ -1,5 +1,6 @@
 package com.alkimin.springMongoDB.domain;
 
+import com.alkimin.springMongoDB.dto.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -20,4 +21,10 @@ public class User implements Serializable {
     private String id;
     private String name;
     private String email;
+
+    public User(UserDTO userDTO) {
+        this.id = userDTO.getId();
+        this.name = userDTO.getName();
+        this.email = userDTO.getEmail();
+    }
 }

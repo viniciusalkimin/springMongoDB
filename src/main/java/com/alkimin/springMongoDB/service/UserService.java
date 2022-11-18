@@ -18,12 +18,16 @@ public class UserService {
 
     public List<UserDTO> findAll (){
         List<User> userList = repository.findAll();
-        return userList.stream().map(user -> new UserDTO(user)).collect(Collectors.toList());
+        return userList.stream().map(UserDTO::new).collect(Collectors.toList());
     }
 
     public User findById(String id) {
       var user = repository.findById(id);
-      return user.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+      return user.orElseThrow(() -> new ObjectNotFoundException("Object not found!"));
+    }
+
+    public User insertUser(User user) {
+       return repository.insert(user);
     }
 
     public User getOne(String name) {
