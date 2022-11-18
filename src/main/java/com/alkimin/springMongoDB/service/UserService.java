@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,6 +29,14 @@ public class UserService {
 
     public User insertUser(User user) {
        return repository.insert(user);
+    }
+
+    public void deleteUser(String id) {
+        Optional<User> userForDelete = repository.findById(id);
+        if(userForDelete.isEmpty()){
+            throw new ObjectNotFoundException("Object not found!");
+        }
+        repository.deleteById(id);
     }
 
     public User getOne(String name) {
