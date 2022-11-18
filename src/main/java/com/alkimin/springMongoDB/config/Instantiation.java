@@ -18,10 +18,10 @@ public class Instantiation implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        User maria = new User(null, "Maria Brown", "maria@gmail.com");
-        User alex = new User(null, "Alex Green", "alex@gmail.com");
-        User bob = new User(null, "Bob Grey", "bob@gmail.com");
+        User vinicius = new User(null, "Vinicius Alkimin", "viniciusalkimin@gmail.com");
+        User davi = new User(null, "Davi Alkimin", "dalkimin@gmail.com");
+        User nelio = new User(null, "Nelio Alves", "acnelio@gmail.com");
         repository.deleteAll();
-        repository.saveAll(Arrays.asList(alex,maria,bob));
+        repository.saveAll(Arrays.asList(vinicius,davi,nelio));
     }
 }
