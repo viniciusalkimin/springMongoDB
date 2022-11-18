@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
 import java.util.List;
 
@@ -42,6 +41,12 @@ public class UserResource {
     public ResponseEntity<User> deleteUser(@PathVariable String id) {
         service.deleteUser(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping
+    public ResponseEntity<UserDTO> updateUser(@RequestBody UserDTO userDTO) {
+        service.updateUser(userDTO);
+        return ResponseEntity.ok().body(userDTO);
     }
 
 }

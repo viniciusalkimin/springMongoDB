@@ -39,7 +39,7 @@ public class UserService {
         repository.deleteById(id);
     }
 
-    public User getOne(String name) {
-        return repository.findByName(name);
+    public User updateUser(UserDTO userDTO) {
+        return repository.save(new User(userDTO));
     }
 }
