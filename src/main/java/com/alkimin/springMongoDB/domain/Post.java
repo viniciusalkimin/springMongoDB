@@ -1,5 +1,6 @@
 package com.alkimin.springMongoDB.domain;
 
+import com.alkimin.springMongoDB.dto.AuthorDTO;
 import com.alkimin.springMongoDB.dto.PostDTO;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -22,13 +23,6 @@ public class Post {
     private LocalDate date;
     private String title;
     private String body;
-    private User author;
+    private AuthorDTO author;
 
-    public Post(PostDTO post) {
-        this.id = post.getId();
-        this.date = post.getDate();
-        this.title = post.getTitle();
-        this.body = post.getBody();
-        this.author = post.getAuthor();
-    }
 }

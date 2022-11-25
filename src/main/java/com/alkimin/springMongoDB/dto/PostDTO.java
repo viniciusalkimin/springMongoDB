@@ -17,7 +17,7 @@ public class PostDTO {
     private LocalDate date;
     private String title;
     private String body;
-    private User author;
+    private AuthorDTO author;
 
     public PostDTO(Post post) {
         this.id = post.getId();
