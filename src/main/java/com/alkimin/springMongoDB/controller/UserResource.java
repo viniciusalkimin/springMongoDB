@@ -1,6 +1,8 @@
 package com.alkimin.springMongoDB.controller;
 
+import com.alkimin.springMongoDB.domain.Post;
 import com.alkimin.springMongoDB.domain.User;
+import com.alkimin.springMongoDB.dto.PostDTO;
 import com.alkimin.springMongoDB.dto.UserDTO;
 import com.alkimin.springMongoDB.service.UserService;
 import lombok.AllArgsConstructor;
@@ -47,6 +49,12 @@ public class UserResource {
     public ResponseEntity<UserDTO> updateUser(@RequestBody UserDTO userDTO) {
         service.updateUser(userDTO);
         return ResponseEntity.ok().body(userDTO);
+    }
+
+    @GetMapping("/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+        var user = service.findById(id);
+        return ResponseEntity.ok().body(user.getPosts());
     }
 
 }

@@ -10,9 +10,10 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Getter
 @EqualsAndHashCode
 @Document(collection="post")
@@ -24,5 +25,16 @@ public class Post {
     private String title;
     private String body;
     private AuthorDTO author;
+    private List<CommentDTO> comments = new ArrayList<>();
 
+    public Post() {
+    }
+
+    public Post(String id, LocalDate date, String title, String body, AuthorDTO author) {
+        this.id = id;
+        this.date = date;
+        this.title = title;
+        this.body = body;
+        this.author = author;
+    }
 }
