@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -18,15 +19,27 @@ public class UserService {
 
     public List<UserDTO> findAll (){
         List<User> userList = repository.findAll();
-        return userList.stream().map(user -> new UserDTO(user)).collect(Collectors.toList());
+        return userList.stream().map(UserDTO::new).collect(Collectors.toList());
     }
 
     public User findById(String id) {
       var user = repository.findById(id);
-      return user.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+      return user.orElseThrow(() -> new ObjectNotFoundException("Object not found!"));
     }
 
-    public User getOne(String name) {
-        return repository.findByName(name);
+    public User insertUser(User user) {
+       return repository.insert(user);
+    }
+
+    public void deleteUser(String id) {
+        Optional<User> userForDelete = repository.findById(id);
+        if(userForDelete.isEmpty()){
+            throw new ObjectNotFoundException("Object not found!");
+        }
+        repository.deleteById(id);
+    }
+
+    public User updateUser(UserDTO userDTO) {
+        return repository.save(new User(userDTO));
     }
 }
